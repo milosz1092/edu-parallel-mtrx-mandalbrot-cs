@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendMatrix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="A" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMatrixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMatrixResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MultipleMatrix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idB" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MultipleMatrixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MultipleMatrixResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatrix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatrixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatrixResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateMandelbrot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="numThreadsPar" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="coloring" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateMandelbrotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateMandelbrotResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMandelbrot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMandelbrotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMandelbrotResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMatrixSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMatrix" />
+  </wsdl:message>
+  <wsdl:message name="SendMatrixSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMatrixResponse" />
+  </wsdl:message>
+  <wsdl:message name="MultipleMatrixSoapIn">
+    <wsdl:part name="parameters" element="tns:MultipleMatrix" />
+  </wsdl:message>
+  <wsdl:message name="MultipleMatrixSoapOut">
+    <wsdl:part name="parameters" element="tns:MultipleMatrixResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatrixSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatrix" />
+  </wsdl:message>
+  <wsdl:message name="GetMatrixSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatrixResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateMandelbrotSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateMandelbrot" />
+  </wsdl:message>
+  <wsdl:message name="GenerateMandelbrotSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateMandelbrotResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandelbrotSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMandelbrot" />
+  </wsdl:message>
+  <wsdl:message name="GetMandelbrotSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMandelbrotResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="SendMatrix">
+      <wsdl:input message="tns:SendMatrixSoapIn" />
+      <wsdl:output message="tns:SendMatrixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MultipleMatrix">
+      <wsdl:input message="tns:MultipleMatrixSoapIn" />
+      <wsdl:output message="tns:MultipleMatrixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatrix">
+      <wsdl:input message="tns:GetMatrixSoapIn" />
+      <wsdl:output message="tns:GetMatrixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMandelbrot">
+      <wsdl:input message="tns:GenerateMandelbrotSoapIn" />
+      <wsdl:output message="tns:GenerateMandelbrotSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandelbrot">
+      <wsdl:input message="tns:GetMandelbrotSoapIn" />
+      <wsdl:output message="tns:GetMandelbrotSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMatrix">
+      <soap:operation soapAction="http://tempuri.org/SendMatrix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MultipleMatrix">
+      <soap:operation soapAction="http://tempuri.org/MultipleMatrix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatrix">
+      <soap:operation soapAction="http://tempuri.org/GetMatrix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMandelbrot">
+      <soap:operation soapAction="http://tempuri.org/GenerateMandelbrot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandelbrot">
+      <soap:operation soapAction="http://tempuri.org/GetMandelbrot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendMatrix">
+      <soap12:operation soapAction="http://tempuri.org/SendMatrix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MultipleMatrix">
+      <soap12:operation soapAction="http://tempuri.org/MultipleMatrix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatrix">
+      <soap12:operation soapAction="http://tempuri.org/GetMatrix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateMandelbrot">
+      <soap12:operation soapAction="http://tempuri.org/GenerateMandelbrot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandelbrot">
+      <soap12:operation soapAction="http://tempuri.org/GetMandelbrot" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:4778/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:4778/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
